@@ -1,0 +1,47 @@
+<div class="todoapp">
+  <h1 class="todoapp__title">todos</h1>
+
+  <div class="todoapp__content">
+    <header class="todoapp__header">
+      <button type="button" class="todoapp__toggle-all active"></button>
+
+      <app-todo-form (save)="addTodo($event)"></app-todo-form>
+    </header>
+
+    <section class="todoapp__main">
+      <app-todo
+        *ngFor="let todo of todos; let i = index; TrackBy: trackById"
+        [todo]="todo"
+        (delete)="deleteTodo(todo)"
+        (rename)="renameTodo(todo, $event)"
+        (toggle)="toggleTodo(todo)"
+      ></app-todo>
+    </section>
+
+    <footer class="todoapp__footer">
+      <span class="todo-count">
+        {{ activeTodos.length }} {{ activeTodos.length === 1 ? 'item' : 'items' }} left
+      </span>
+
+      <nav class="filter">
+        <a href="#/" class="filter__link selected">
+          All
+        </a>
+
+        <a href="#/active" class="filter__link">
+          Active
+        </a>
+
+        <a href="#/completed" class="filter__link">
+          Completed
+        </a>
+      </nav>
+
+      <button type="button" class="todoapp__clear-completed">
+        Clear completed
+      </button>
+    </footer>
+  </div>
+
+  <app-message></app-message>
+</div>
