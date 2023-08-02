@@ -1,0 +1,12 @@
+<div
+  class="notification is-danger is-light has-text-weight-normal"
+  [class.hidden]="hidden"
+>
+  <button
+    type="button"
+    class="delete"
+    (click)="hidden=true"
+  ></button>
+  {{ message }}
+  <br />
+</div>
